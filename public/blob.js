@@ -1,4 +1,4 @@
-function BlobBody(x, y, m) {
+function Blob(x, y, m) {
 
     this.color = 'hsl(' + Math.floor(255 * Math.random()) + ',100%,50%)';
 
@@ -15,7 +15,7 @@ function BlobBody(x, y, m) {
 
 }
 
-BlobBody.prototype.show = function(ctx) {
+Blob.prototype.show = function(ctx) {
 
   ctx.beginPath();
   ctx.fillStyle = this.color;
@@ -25,7 +25,7 @@ BlobBody.prototype.show = function(ctx) {
 
 }
 
-BlobBody.prototype.inWindow = function(px, py, cw, ch) {
+Blob.prototype.inWindow = function(px, py, cw, ch) {
 
   return (this.pos.x >= px-cw/2 && this.pos.x <= px+cw/2 && this.pos.y >= py-ch/2 && this.pos.y <= py+ch/2);
 

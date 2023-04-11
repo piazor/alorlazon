@@ -8,8 +8,6 @@ canvas.height = window.innerHeight;
 const actualWidth = 30000;
 const actualHeight = 30000;
 
-let map = new Map(0, 0, 200, 200);
-
 let blobs = [];
 
 let player = new Player(0, 0, 5, 0, 'a');
@@ -78,7 +76,7 @@ socket.on('blobData', (data) => {
   blobs = [];
   for (let x = 0; x < data.length; x++) {
 
-    let b = new BlobBody(data[x].x, data[x].y, 1);
+    let b = new Blob(data[x].x, data[x].y, 1);
     b.color = data[x].color;
 
     blobs.push(b);
@@ -136,14 +134,6 @@ function main() {
   player.show(ctx);
 
   ctx.setTransform(1, 0, 0, 1, 0, 0);
-
-  map.show(ctx, player.pos.x, player.pos.y, player.r, actualWidth, actualHeight);
-
-  ctx.fillStyle = "rgba(57, 59, 60, 0.3)";
-
-  ctx.rect(canvas.width-350, 0, 300, 400);
-
-  ctx.fill();
 
   ctx.fillStyle = 'black';
   ctx.font = "bold 30px Helvetica";
